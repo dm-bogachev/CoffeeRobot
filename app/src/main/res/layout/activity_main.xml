@@ -21,12 +21,23 @@
 
     <TextView
         android:id="@+id/testConnectionMsg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="410dp"
+        android:layout_height="457dp"
         android:layout_marginTop="64dp"
         android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/testButtonSettings"
+        android:layout_width="146dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="59dp"
+        android:onClick="testClick"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testConnectionMsg" />
 
 </android.support.constraint.ConstraintLayout>

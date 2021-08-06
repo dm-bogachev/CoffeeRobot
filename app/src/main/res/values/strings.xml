@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CoffeeRobot</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="ip_field_label">IP address:</string>
+    <string name="default_ip">192.168.0.2</string>
+    <string name="ip_port_label">Port:</string>
+    <string name="default_port">48569</string>
+    <string name="connect_to">Connection timeout:</string>
+    <string name="receive_to">Receive timeout:</string>
+    <string name="default_timeout">5000</string>
 </resources>

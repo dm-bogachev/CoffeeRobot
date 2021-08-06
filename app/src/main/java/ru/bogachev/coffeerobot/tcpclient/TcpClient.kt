@@ -12,8 +12,8 @@ import kotlin.concurrent.thread
 
 class TcpClient(socketIP_: String = "192.168.0.2", socketPort_: Int = 48569,) {
 
-    private val socketIP: String = socketIP_
-    private val socketPort: Int = socketPort_
+    var socketIP: String = socketIP_
+    var socketPort: Int = socketPort_
     private var isConnected = false
 
     lateinit var tcpListener: TcpListener
