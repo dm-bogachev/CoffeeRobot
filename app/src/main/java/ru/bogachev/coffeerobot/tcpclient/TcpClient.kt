@@ -1,6 +1,5 @@
 package ru.bogachev.coffeerobot.tcpclient
 
-import android.content.Context
 import android.util.Log
 import java.io.BufferedReader
 import java.io.BufferedWriter
@@ -10,7 +9,7 @@ import java.net.Socket
 import java.net.SocketTimeoutException
 import kotlin.concurrent.thread
 
-class TcpClient(socketIP_: String = "192.168.0.2", socketPort_: Int = 48569,) {
+class TcpClient(socketIP_: String = "192.168.0.2", socketPort_: Int = 48569) {
 
     var socketIP: String = socketIP_
     var socketPort: Int = socketPort_
@@ -112,8 +111,8 @@ class TcpClient(socketIP_: String = "192.168.0.2", socketPort_: Int = 48569,) {
 
     private fun closeSocket() {
         socket.close()
-        bufferedReader.close();
-        bufferedWriter.close();
+        bufferedReader.close()
+        bufferedWriter.close()
         isConnected = false
         tcpListener.onTcpConnectionStatusChanged(false)
     }

@@ -8,4 +8,9 @@
     <string name="connect_to">Connection timeout:</string>
     <string name="receive_to">Receive timeout:</string>
     <string name="default_timeout" translatable="false">5000</string>
+    <string name="status_connected">CONNECTED</string>
+    <string name="status_disconnected">DISCONNECTED</string>
+    <string name="blank" translatable="false"> </string>
+    <string name="send">Send</string>
+    <string name="settings">Settings</string>
 </resources>

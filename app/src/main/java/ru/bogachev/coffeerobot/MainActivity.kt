@@ -1,16 +1,15 @@
 package ru.bogachev.coffeerobot
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import ru.bogachev.coffeerobot.tcpclient.TcpClient
 import ru.bogachev.coffeerobot.tcpclient.TcpListener
-import android.content.Intent
-import android.content.SharedPreferences
-import android.widget.EditText
-import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity(), TcpListener {
@@ -25,11 +24,8 @@ class MainActivity : AppCompatActivity(), TcpListener {
         setContentView(R.layout.activity_main)
         preferences = getSharedPreferences("settings", Context.MODE_PRIVATE)
         tcpParameters.load(preferences)
-        try{
-        tcpClientInitialization()}
-        catch (e: Exception){
-            e.printStackTrace()
-        }
+        tcpClientInitialization()
+
 
     }
 
@@ -45,10 +41,10 @@ class MainActivity : AppCompatActivity(), TcpListener {
         runOnUiThread {
             val v = findViewById<TextView>(R.id.testConnectionStatus)
             if (isConnectedNow) {
-                v.text = "CONNECTED"
+                v.text = getString(R.string.status_connected)
             } else
             {
-                v.text = "DISCONNECTED"
+                v.text = getString(R.string.status_disconnected)
             }
         }
     }
@@ -71,12 +67,14 @@ class MainActivity : AppCompatActivity(), TcpListener {
         tcpClient.run()
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun testSend(v: View)
     {
         val text: EditText = findViewById(R.id.editTextTextPersonName)
         tcpClient.writeToStream(text.text.toString())
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun testClick(v: View) {
         val intent = Intent(this@MainActivity, SettingsActivity::class.java)
         startActivity(intent)

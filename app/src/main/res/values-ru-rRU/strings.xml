@@ -5,4 +5,8 @@
     <string name="connect_to">Таймаут соединения:</string>
     <string name="receive_to">Таймаут приёма:</string>
     <string name="title_activity_settings">Настройки</string>
+    <string name="status_connected">ПОДКЛЮЧЕНО</string>
+    <string name="status_disconnected">ОТКЛЮЧЕНО</string>
+    <string name="send">Отправить</string>
+    <string name="settings">Настройки</string>
 </resources>
