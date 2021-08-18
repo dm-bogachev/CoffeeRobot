@@ -9,6 +9,8 @@ import ru.bogachev.coffeerobot.tcpclient.TcpClient
 import ru.bogachev.coffeerobot.tcpclient.TcpListener
 import android.content.Intent
 import android.content.SharedPreferences
+import android.widget.EditText
+import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity(), TcpListener {
@@ -23,7 +25,11 @@ class MainActivity : AppCompatActivity(), TcpListener {
         setContentView(R.layout.activity_main)
         preferences = getSharedPreferences("settings", Context.MODE_PRIVATE)
         tcpParameters.load(preferences)
-        tcpClientInitialization()
+        try{
+        tcpClientInitialization()}
+        catch (e: Exception){
+            e.printStackTrace()
+        }
 
     }
 
@@ -63,6 +69,12 @@ class MainActivity : AppCompatActivity(), TcpListener {
         tcpClient.receiveTimeout = tcpParameters.tcpSocketReceiveTimeout
         tcpClient.tcpListener = this
         tcpClient.run()
+    }
+
+    fun testSend(v: View)
+    {
+        val text: EditText = findViewById(R.id.editTextTextPersonName)
+        tcpClient.writeToStream(text.text.toString())
     }
 
     fun testClick(v: View) {

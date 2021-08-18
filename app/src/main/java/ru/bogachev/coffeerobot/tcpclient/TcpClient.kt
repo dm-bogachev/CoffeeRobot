@@ -20,8 +20,12 @@ class TcpClient(socketIP_: String = "192.168.0.2", socketPort_: Int = 48569,) {
 
     var receiveTimeout: Int = 500 // 60000
         set(value) {
-            if (this::socket.isInitialized){
-                socket.soTimeout = value
+            try {
+                if (this::socket.isInitialized){
+                    socket.soTimeout = value
+                }
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
             }
             field = value
         }
@@ -32,9 +36,11 @@ class TcpClient(socketIP_: String = "192.168.0.2", socketPort_: Int = 48569,) {
     private lateinit var bufferedReader: BufferedReader// = tcpClient.getInputStream().bufferedReader()
     private lateinit var bufferedWriter: BufferedWriter// = tcpClient.getOutputStream().bufferedWriter()
 
-    private fun writeToStream(message: String) {
-        bufferedWriter.write(message + System.getProperty("line.separator"))
-        bufferedWriter.flush()
+    fun writeToStream(message: String) {
+        thread {
+            bufferedWriter.write(message + System.getProperty("line.separator"))
+            bufferedWriter.flush()
+        }
     }
 
     private fun main() {
@@ -92,6 +98,9 @@ class TcpClient(socketIP_: String = "192.168.0.2", socketPort_: Int = 48569,) {
             {
                 e.printStackTrace()
                 Log.i("Socket", "Unable to connect")
+            } catch (e: Exception)
+            {
+                e.printStackTrace()
             }
         }
         socket.soTimeout = receiveTimeout

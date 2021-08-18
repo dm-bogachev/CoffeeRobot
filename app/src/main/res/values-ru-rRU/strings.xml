@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ip_field_label">IP адрес:</string>
+    <string name="ip_port_label">Порт:</string>
+    <string name="connect_to">Таймаут соединения:</string>
+    <string name="receive_to">Таймаут приёма:</string>
+    <string name="title_activity_settings">Настройки</string>
+</resources>
